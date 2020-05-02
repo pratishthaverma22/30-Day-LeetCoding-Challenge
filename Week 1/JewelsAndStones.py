@@ -19,8 +19,6 @@ The characters in J are distinct.
 
 class Solution:
     def numJewelsInStones(self, J: str, S: str) -> int:
-        total = 0 
-        for x in list(J):
-            total += S.count(x)
-        return total
+        
+        return len([x for x in S if x in J])
         
