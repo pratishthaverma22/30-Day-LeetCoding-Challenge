@@ -20,14 +20,7 @@ Explanation: The binary representation of 1 is 1 (no leading zero bits), and its
 
 class Solution:
     def findComplement(self, N: int) -> int:
-        if N == 0: 
-            return 1
-        i = 0 
-        val = 1
-        while val <= N:
-            N ^= 1 << i
-            i += 1
-            val = 2**i
-        
-        return N
-            
+        str = ['1' if i == '0' else '0' for i in bin(N)[2:]]
+        return int(''.join(str), 2)
+    
+    
