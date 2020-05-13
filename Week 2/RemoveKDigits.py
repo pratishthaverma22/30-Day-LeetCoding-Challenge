@@ -23,15 +23,21 @@ class Solution:
         :type k: int
         :rtype: str
         """
+                if k == len(num):
+            return "0"
+        
         stack = []
-        for ch in num:
-            while k > 0 and len(stack) > 0 and int(stack[-1]) > int(ch):
+        
+        for digit in num:
+            while k > 0 and stack != [] and stack[-1] > digit:
                 stack.pop()
                 k -= 1
-            stack.append(ch)
+            
+            stack.append(digit)
         
-        while k > 0:
-            stack.pop()
-            k -= 1
-        # print(stack)
-        return "0" if len(stack) ==0 else str(int("".join(stack)))
+        if k > 0:
+            result = str(int(''.join(stack[:-k])))
+        else:
+            result = str(int(''.join(stack)))
+        
+        return result
